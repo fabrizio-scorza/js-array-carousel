@@ -16,7 +16,7 @@ for (let i = 0; i< imgPathArray.length; i++){
     //assegnazione del codice html da inserire nel DOM ad una variabile
     const itemHtml = `
         <div class="item">
-            img src="${imgPath}">
+            <img src="${imgPath}">
         </div>
     `;
 
@@ -26,3 +26,16 @@ for (let i = 0; i< imgPathArray.length; i++){
     }
 // inserimento di tutti gli item creati all'interno del DOM
 itemsContainerElement.innerHTML = itemsHtml;
+
+//aggiunta della classe active al primo elemento dell'array
+    //dichiarazione di una variabile che recupera dal dom tutti gli elementi di classe item
+    const itemsList = document.getElementsByClassName('item'); //html collection - array like
+
+    //inizializzazione della variabile che scorre la html collection
+    let itemsIndex = 0; //number
+
+    //dichiarazione della variabile che contiene il primo elemento dell'html collection
+    const firstItem = itemsList[itemsIndex]; //DOM element
+
+    //aggiunta della classe che lo attiva come primo elemento
+    firstItem.classList.add('active');

@@ -13,6 +13,7 @@ img {
     height: 100vh;
     overflow: hidden;
     position:relative;
+    background: radial-gradient(circle, rgba(107,20,58,1) 0%, rgba(6,12,19,1) 74%);
 }
 
 /***BODY************************************************/
@@ -41,15 +42,17 @@ img {
     font-size: 38px;
     cursor: pointer;
     color:#677179;
-    transform: translate(-50%, -50%);
+    
 }
 
 .prev{
     top:0;
     left: 50%;
+    transform:translate(-50%, -65%);
 }
 .next{
     left:50%;
+    transform:translate(-50%, -35%);    
 }
 
 .active{
