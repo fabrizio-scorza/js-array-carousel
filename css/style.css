@@ -26,6 +26,7 @@ img {
 }
 .items-container{
    height: 100%;
+   position: relative;
 }
 .item{
     height:100%;
@@ -35,6 +36,24 @@ img {
     object-fit:contain;
 }
 
+.prev, .next{
+    position: absolute;
+    font-size: 38px;
+    cursor: pointer;
+    color:#677179;
+    transform: translate(-50%, -50%);
+}
+
+.prev{
+    top:0;
+    left: 50%;
+}
+.next{
+    left:50%;
+}
+
 .active{
     display: block;
 }
+
+
