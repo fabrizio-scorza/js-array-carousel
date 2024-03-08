@@ -34,7 +34,7 @@ img {
     display: none;
 }
 .item img{
-    object-fit:contain;
+    object-fit:cover;
 }
 
 .prev, .next{

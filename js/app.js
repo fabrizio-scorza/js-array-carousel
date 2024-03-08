@@ -45,14 +45,23 @@ itemsContainerElement.innerHTML = itemsHtml;
     const next = document.querySelector('.next'); //DOM element
     const prev = document.querySelector('.prev'); //DOM element
 
+// controllo inizio o fine lista
+    // inizializzazione della variabile ultimo elemento
+    const lastItemIndex = itemsList.length -1; //number
     //ascolto del click su next
     next.addEventListener('click', function(){
         //rimozione della classe attivo sull'elemento visualizzato
         itemsList[itemsIndex].classList.remove('active');
 
-        //incremento dell'indice per selezionare l'elemento successivo
-        itemsIndex++;
+        //controllo della posizione dell'indice inferiore alla lunghezza della lista
+        if (itemsIndex < lastItemIndex){
+            //incremento dell'indice per selezionare l'elemento successivo
+            itemsIndex++;
 
+        } else {
+            //se la lista è finita azzera l'indice
+            itemsIndex = 0;
+        }
         //aggiunta della classe attivo all'elemento successivo
         itemsList[itemsIndex].classList.add('active');
     })
@@ -61,10 +70,15 @@ itemsContainerElement.innerHTML = itemsHtml;
     prev.addEventListener('click', function(){
         //rimozione della classe attivo sull'elemento visualizzato
         itemsList[itemsIndex].classList.remove('active');
+        
+        //controllo della posizione dell'indice maggiore di zero uguale o negativo
+        if (itemsIndex > 0){
+            //decremento dell'indice per selezionare l'elemento successivo
+            itemsIndex--;
 
-        //incremento dell'indice per selezionare l'elemento successivo
-        itemsIndex--;
-
+        } else {
+            itemsIndex = lastItemIndex;
+        } 
         //aggiunta della classe attivo all'elemento successivo
         itemsList[itemsIndex].classList.add('active');
     })
