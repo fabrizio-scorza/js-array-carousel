@@ -39,3 +39,19 @@ itemsContainerElement.innerHTML = itemsHtml;
 
     //aggiunta della classe che lo attiva come primo elemento
     firstItem.classList.add('active');
+
+// cambio dell'immagine al click del pulsante next e prev
+    //dichiarazione delle variabili next e prev contenenti i rispettivi elementi del DOM next
+    const next = document.querySelector('.next'); //DOM element
+
+    //ascolto del click su next
+    next.addEventListener('click', function(){
+        //rimozione della classe attivo sull'elemento visualizzato
+        itemsList[itemsIndex].classList.remove('active');
+
+        //incremento dell'indice per selezionare l'elemento successivo
+        itemsIndex++;
+
+        //aggiunta della classe attivo all'elemento successivo
+        itemsList[itemsIndex].classList.add('active');
+    })
