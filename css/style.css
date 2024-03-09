@@ -13,7 +13,7 @@ img {
     height: 100vh;
     overflow: hidden;
     position:relative;
-    background: radial-gradient(circle, rgba(107,20,58,1) 0%, rgba(6,12,19,1) 74%);
+    background: radial-gradient(circle, #6b143a 0%, rgba(6,12,19,1) 74%);
 }
 
 /***BODY************************************************/
@@ -29,7 +29,7 @@ img {
    height: 100%;
    position: relative;
 }
-.item{
+.items-container .item{
     height:100%;
     display: none;
 }
@@ -55,8 +55,25 @@ img {
     transform:translate(-50%, -35%);    
 }
 
-.active{
+.items-container .active{
     display: block;
 }
 
+/***THUMBNAILS**********************************************/
+.items-thumbnail{
+position: absolute;
+top:50%;
+transform: translatey(-50%);
+}
+.items-thumbnail .item{
+    width: 200px;
+    height: 80px;
+    margin: 10px;
+}
+.items-thumbnail .item:not(.active) img{
+    filter: brightness(25%) blur(1px);
+}
 
+.items-thumbnail .active{
+    border: 3px solid #6b143a;
+}

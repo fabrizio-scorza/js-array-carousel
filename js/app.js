@@ -2,8 +2,11 @@
 const imgPathArray = ['./img/01.webp', './img/02.webp', './img/03.webp', './img/04.webp', './img/05.webp']; //array[string]
 
 //dichiarazione delle variabili 
-    // associazione dell'elemento item-container ad una variabile
+    // associazione dell'elemento items-container ad una variabile
     const itemsContainerElement = document.querySelector('.items-container'); //DOM element
+    
+   //associazione dell'elemento items-thumbnail ad una variabile
+    const itemsThumbnailElement = document.querySelector('.items-thumbnail'); //DOM element
     
     // inizializzazione della variabile itemsHtml che andrà a contenere tutto il codsice html da inserire nel DOM
     let itemsHtml = ' '; //string
@@ -27,18 +30,30 @@ for (let i = 0; i< imgPathArray.length; i++){
 // inserimento di tutti gli item creati all'interno del DOM
 itemsContainerElement.innerHTML = itemsHtml;
 
+//inserimento della lista foto all'interno dell'elemento thumbnails
+itemsThumbnailElement.innerHTML = itemsHtml;
+
+
 //aggiunta della classe active al primo elemento dell'array
-    //dichiarazione di una variabile che recupera dal dom tutti gli elementi di classe item
-    const itemsList = document.getElementsByClassName('item'); //html collection - array like
+    //dichiarazione di una variabile che recupera dal container tutti gli elementi di classe item
+    const itemsContainerList = itemsContainerElement.getElementsByClassName('item'); //html collection - array like
+
+    //dichiarazione di una variabile che recupera dalla thumbnail tutti gli elementi di classe item
+    const itemsThumbnailList = itemsThumbnailElement.getElementsByClassName('item'); //html collection - array like
+    //console.log (itemsList)
 
     //inizializzazione della variabile che scorre la html collection
-    let itemsIndex = 0; //number
+    let itemsIndex = 0; //number    
 
-    //dichiarazione della variabile che contiene il primo elemento dell'html collection
-    const firstItem = itemsList[itemsIndex]; //DOM element
+    //dichiarazione della variabile che contiene il primo elemento dell'html collection container
+    const firstItemInContainer = itemsContainerList[itemsIndex]; //DOM element
 
-    //aggiunta della classe che lo attiva come primo elemento
-    firstItem.classList.add('active');
+    //dichiarazione della variabile che contiene il primo elemento dell'html collection thumbnail
+    const firstItemInThumbnail = itemsThumbnailList[itemsIndex]; //DOM element
+
+    //aggiunta della classe che lo attiva come primo elemento sia in container che in thumbnail
+    firstItemInContainer.classList.add('active');
+    firstItemInThumbnail.classList.add('active');
 
 // cambio dell'immagine al click del pulsante next e prev
     //dichiarazione delle variabili next e prev contenenti i rispettivi elementi del DOM next
@@ -47,11 +62,12 @@ itemsContainerElement.innerHTML = itemsHtml;
 
 // controllo inizio o fine lista
     // inizializzazione della variabile ultimo elemento
-    const lastItemIndex = itemsList.length -1; //number
+    const lastItemIndex = itemsContainerList.length -1; //number
     //ascolto del click su next
     next.addEventListener('click', function(){
         //rimozione della classe attivo sull'elemento visualizzato
-        itemsList[itemsIndex].classList.remove('active');
+        itemsContainerList[itemsIndex].classList.remove('active');
+        itemsThumbnailList[itemsIndex].classList.remove('active');
 
         //controllo della posizione dell'indice inferiore alla lunghezza della lista
         if (itemsIndex < lastItemIndex){
@@ -62,15 +78,18 @@ itemsContainerElement.innerHTML = itemsHtml;
             //se la lista è finita azzera l'indice
             itemsIndex = 0;
         }
+
         //aggiunta della classe attivo all'elemento successivo
-        itemsList[itemsIndex].classList.add('active');
+        itemsContainerList[itemsIndex].classList.add('active');
+        itemsThumbnailList[itemsIndex].classList.add('active');
     })
 
     //ascolto del click su prev
     prev.addEventListener('click', function(){
         //rimozione della classe attivo sull'elemento visualizzato
-        itemsList[itemsIndex].classList.remove('active');
-        
+        itemsContainerList[itemsIndex].classList.remove('active');
+        itemsThumbnailList[itemsIndex].classList.remove('active');
+
         //controllo della posizione dell'indice maggiore di zero uguale o negativo
         if (itemsIndex > 0){
             //decremento dell'indice per selezionare l'elemento successivo
@@ -79,6 +98,8 @@ itemsContainerElement.innerHTML = itemsHtml;
         } else {
             itemsIndex = lastItemIndex;
         } 
+
         //aggiunta della classe attivo all'elemento successivo
-        itemsList[itemsIndex].classList.add('active');
+        itemsContainerList[itemsIndex].classList.add('active');
+        itemsThumbnailList[itemsIndex].classList.add('active');
     })
