@@ -16,9 +16,17 @@ for (let i = 0; i< imgPathArray.length; i++){
    // assegnazione del percorso alla posizione i alla variabile imgPath
     const imgPath = imgPathArray[i]; //string
 
+    // dichiarazione di una variabile contenente la classe
+    let className ='item'; //string
+
+    // controllo prima slide e assegnazione classe active
+    if (i === 0){
+        className += ' active';
+    }
+
     //assegnazione del codice html da inserire nel DOM ad una variabile
     const itemHtml = `
-        <div class="item">
+        <div class="${className}">
             <img src="${imgPath}">
         </div>
     `;
@@ -34,26 +42,26 @@ itemsContainerElement.innerHTML = itemsHtml;
 itemsThumbnailElement.innerHTML = itemsHtml;
 
 
-//aggiunta della classe active al primo elemento dell'array
-    //dichiarazione di una variabile che recupera dal container tutti gli elementi di classe item
-    const itemsContainerList = itemsContainerElement.getElementsByClassName('item'); //html collection - array like
+//dichiarazione di una variabile che recupera dal container tutti gli elementi di classe item
+const itemsContainerList = itemsContainerElement.getElementsByClassName('item'); //html collection - array like
 
-    //dichiarazione di una variabile che recupera dalla thumbnail tutti gli elementi di classe item
-    const itemsThumbnailList = itemsThumbnailElement.getElementsByClassName('item'); //html collection - array like
-    //console.log (itemsList)
+//dichiarazione di una variabile che recupera dalla thumbnail tutti gli elementi di classe item
+const itemsThumbnailList = itemsThumbnailElement.getElementsByClassName('item'); //html collection - array like
 
-    //inizializzazione della variabile che scorre la html collection
-    let itemsIndex = 0; //number    
+//inizializzazione della variabile che scorre la html collection
+let itemsIndex = 0; //number    
 
-    //dichiarazione della variabile che contiene il primo elemento dell'html collection container
-    const firstItemInContainer = itemsContainerList[itemsIndex]; //DOM element
+    // //dichiarazione della variabile che contiene il primo elemento dell'html collection container
+    // const firstItemInContainer = itemsContainerList[itemsIndex]; //DOM element
 
-    //dichiarazione della variabile che contiene il primo elemento dell'html collection thumbnail
-    const firstItemInThumbnail = itemsThumbnailList[itemsIndex]; //DOM element
+    // //dichiarazione della variabile che contiene il primo elemento dell'html collection thumbnail
+    // const firstItemInThumbnail = itemsThumbnailList[itemsIndex]; //DOM element
 
-    //aggiunta della classe che lo attiva come primo elemento sia in container che in thumbnail
-    firstItemInContainer.classList.add('active');
-    firstItemInThumbnail.classList.add('active');
+    // //aggiunta della classe che lo attiva come primo elemento sia in container che in thumbnail
+    // firstItemInContainer.classList.add('active');
+    // firstItemInThumbnail.classList.add('active'); 
+
+    // inserito if all'interno del ciclo con controllo primo elemento che sostituisce questo blocco di codice
 
 // cambio dell'immagine al click del pulsante next e prev
     //dichiarazione delle variabili next e prev contenenti i rispettivi elementi del DOM next
